@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Data</title>
+    <style>
+        .main {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        #container {
+            display: flex;
+            gap: 20px;
+        }
+        #commondata, #uncommondata {
+            border: 1px solid black;
+            padding: 10px;
+            width: 300px;
+            height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div id="container">
+            <div id="commondata"></div>
+            <div id="uncommondata"></div>
+        </div>
+    </div>
+
+    <script>
+        const student1 = { name: "harshit", roll: "26", class: "IT" };
+        const student2 = { name: "manu", roll: "36", class: "IT" };
+        const student3 = { name: "mahi", roll: "34", class: "IT" };
+        const student4 = { name: "karan", roll: "47", class: "ECE" };
+        const student5 = { name: "kanishq", roll: "33", class: "ECE" };
+
+        const students = [student1, student2, student3, student4, student5];
+
+        const common = students.filter(s => s.class === "IT");
+        const uncommon = students.filter(s => s.class === "ECE");
+
+        function toList(arr) {
+            return "<ul>" + arr.map(s => `<li>${s.name} (Roll: ${s.roll}, Class: ${s.class})</li>`).join('') + "</ul>";
+        }
+
+        document.getElementById("commondata").innerHTML = "<h3>IT Students</h3>" + toList(common);
+        document.getElementById("uncommondata").innerHTML = "<h3>ECE Students</h3>" + toList(uncommon);
+    </script>
+</body>
+</html>
